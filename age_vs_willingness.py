@@ -109,10 +109,10 @@ with open("test_results.csv", "w", newline="") as csvfile:
                             fishers_res = "NO ASSOCIATION"
                         if(odds_ratio > 1.1):
                             # group 1 more willing
-                            fishers_res = "NOT INDEPENDENT, "+ages[a]+" is more willing"
+                            fishers_res = "NOT INDEPENDENT, "+ages[b]+" is more willing"
                         if(odds_ratio < 0.9):
                             # group 2 more willing
-                            fishers_res = "NOT INDEPENDENT, "+ages[b]+" is more willing"
+                            fishers_res = "NOT INDEPENDENT, "+ages[a]+" is more willing"
                     else:
                         # res="Fail to reject the null hypothesis"
                         fishers_res = "INDEPENDENT"

@@ -65,7 +65,7 @@ def contingency_table_two(array1, array2):
 
     return table
 
-with open("test_results.csv", "w", newline="") as csvfile:
+with open("tests_results.csv", "w", newline="") as csvfile:
     writer = csv.writer(csvfile)
     writer.writerow([
         "title", "age_group_1", "age_group_2",
@@ -100,7 +100,7 @@ with open("test_results.csv", "w", newline="") as csvfile:
                         KSres = "NOT DIFFERENT"
 
                     fishers_res= ""
-                    table = contingency_table_two(responses[age_indices(a)], responses[age_indices(b)])
+                    table = contingency_table_two(responses[age_indices(b)], responses[age_indices(a)])
                     odds_ratio, fishers_p_val = stats.fisher_exact(table, alternative='two-sided')
                     if fishers_p_val < 0.05:
                         # res="Reject the null hypothesis"
@@ -109,10 +109,10 @@ with open("test_results.csv", "w", newline="") as csvfile:
                             fishers_res = "NO ASSOCIATION"
                         if(odds_ratio > 1.1):
                             # group 1 more willing
-                            fishers_res = "NOT INDEPENDENT, "+ages[b]+" is more willing"
+                            fishers_res = "NOT INDEPENDENT, "+ages[a]+" is more willing"
                         if(odds_ratio < 0.9):
                             # group 2 more willing
-                            fishers_res = "NOT INDEPENDENT, "+ages[a]+" is more willing"
+                            fishers_res = "NOT INDEPENDENT, "+ages[b]+" is more willing"
                     else:
                         # res="Fail to reject the null hypothesis"
                         fishers_res = "INDEPENDENT"
